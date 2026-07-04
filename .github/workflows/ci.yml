@@ -31,8 +31,9 @@ jobs:
       - run: go build ./...
       - name: Test + 100% coverage gate
         shell: bash
-        env:
-          CGO_ENABLED: "0"
+        # cgo is enabled here only so the -race detector can build; the library
+        # itself is CGO-free, which the arch-native / arch-qemu jobs prove by
+        # building and testing it with CGO_ENABLED=0.
         run: |
           COVERPKG=$(go list ./... | paste -sd, -)
           go test -race -coverpkg="$COVERPKG" -coverprofile=cover.out ./...
