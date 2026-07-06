@@ -73,3 +73,14 @@ enforces **100% statement coverage** under `-race` and builds/tests on all six
 ## License
 
 BSD-3-Clause. Copyright (c) the go-ruby-acme/acme authors.
+
+## WebAssembly
+
+Being pure Go (CGO=0), this library also compiles to **WebAssembly** — both
+`GOOS=js GOARCH=wasm` (browser / Node.js) and `GOOS=wasip1 GOARCH=wasm` (WASI).
+CI builds both targets on every push, alongside the six 64-bit native/qemu arches.
+
+```sh
+GOOS=js     GOARCH=wasm go build ./...   # browser / Node
+GOOS=wasip1 GOARCH=wasm go build ./...   # WASI (wasmtime, wasmer, wasmedge, …)
+```
