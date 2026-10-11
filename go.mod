@@ -2,4 +2,4 @@ module github.com/go-ruby-acme/acme
 
 go 1.27.1
 
-require golang.org/x/crypto v0.57.0
+require golang.org/x/crypto v0.58.0
